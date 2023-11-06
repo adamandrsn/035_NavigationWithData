@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Anderson Drink</string>
+    <string name="back_button">Back</string>
+    <string name="confirm">Confirm</string>
+    <string name="next">Next</string>
+    <string name="cancel">Cancel</string>
+    <string name="flavor1">Vanilla</string>
+    <string name="flavor2">Coklat</string>
+    <string name="flavor3">Matcha</string>
+    <string name="flavor4">Strawberry</string>
+    <string name="flavor5">Sugar</string>
+    <string name="order_summary">Ringkasan Order</string>
+    <string name="send">Send Order</string>
+    <string name="quantity">Jumlah</string>
+    <string name="flavor">Rasa</string>
+    <string name="subtotal_price">Subtotal: Rp %s</string>
+    <string name="total_price">Total %s</string>
+</resources>
