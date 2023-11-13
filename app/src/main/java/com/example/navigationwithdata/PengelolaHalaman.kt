@@ -28,7 +28,8 @@ import com.example.navigationwithdata.data.SumberData
 enum class PengelolaHalaman {
     Home,
     Rasa,
-    Summary
+    Summary,
+    CustomerDetails,
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -77,8 +78,18 @@ fun EsJumboApp(
         ) {
             composable(route = PengelolaHalaman.Home.name) {
                 HalamanHome(onNextButtonClicked = {
-                    navController.navigate(PengelolaHalaman.Rasa.name)
-                }
+                    navController.navigate(PengelolaHalaman.CustomerDetails.name)
+                })
+            }
+            composable(route = PengelolaHalaman.CustomerDetails.name) {
+                CustomerDetailsScreen(
+                    onConfirmButtonClicked = { nama, nomor, alamat ->
+                        viewModel.setCustomerDetails(nama, nomor, alamat)
+                        navController.navigate(PengelolaHalaman.Rasa.name)
+                    },
+                    onCancelButtonClicked = {
+                        navController.navigate(PengelolaHalaman.Home.name)
+                    },
                 )
             }
             composable(route = PengelolaHalaman.Rasa.name) {
@@ -89,11 +100,9 @@ fun EsJumboApp(
                     onConfirmButtonClicked = { viewModel.setJumlah(it) },
                     onNextButtonClicked = { navController.navigate(PengelolaHalaman.Summary.name) },
                     onCancelButtonClicked = {
-                        cancelOrderAndNavigateToHome(
-                            viewModel,
-                            navController
-                        )
-                    })
+                        navController.navigate(PengelolaHalaman.CustomerDetails.name)
+                    }
+                )
             }
             composable(route = PengelolaHalaman.Summary.name) {
                 HalamanDua(
